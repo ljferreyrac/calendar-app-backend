@@ -11,5 +11,8 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ]
+    ],
+    "outputs": {
+        "public": true
+    }
 }
