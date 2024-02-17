@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const { dbConnection } = require('./database/config');
+const path = require('path')
 
 const { PORT } = process.env
 // Crear el servidor de express
@@ -14,7 +15,7 @@ dbConnection();
 app.use( cors() );
 
 // Directorio Público
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
   
 
 // Lectura y parseo del body
