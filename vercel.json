@@ -12,7 +12,10 @@
             "dest": "/"
         }
     ],
-    "outputs": {
-        "public": true
-    }
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ]
 }
