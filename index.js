@@ -2,7 +2,6 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const { dbConnection } = require('./database/config');
-const path = require('path');
 
 const { PORT } = process.env
 // Crear el servidor de express
@@ -15,13 +14,7 @@ dbConnection();
 app.use( cors() );
 
 // Directorio Público
-app.use(express.static('public', {
-    setHeaders: function (res, path) {
-      if (path.endsWith('.js')) {
-        res.type('application/javascript');
-      }
-    }
-}));
+app.use(express.static('public'));
   
 
 // Lectura y parseo del body
@@ -33,7 +26,7 @@ app.use('/api/events', require('./routes/events'));
 
 /** Para cualquier otra petición */
 app.get('*', ( req, res ) => {
-    res.sendFile( path.join( __dirname+'/public/index.html' ) );
+    res.sendFile( __dirname+'/public/index.html' );
 });
 
 // Escuchar peticiones
