@@ -15,7 +15,14 @@ dbConnection();
 app.use( cors() );
 
 // Directorio Público
-app.use( express.static('public') );
+app.use(express.static('public', {
+    setHeaders: function (res, path) {
+      if (path.endsWith('.js')) {
+        res.type('application/javascript');
+      }
+    }
+}));
+  
 
 // Lectura y parseo del body
 app.use( express.json() );
